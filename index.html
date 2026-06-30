@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Susu Farm Produce</title>
+    <meta name="description" content="Growing prosperity through quality agriculture. Plant today and harvest tomorrow.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --farm-green: #2D5A27;
+            --farm-light: #4A7C44;
+            --farm-cream: #F5F1E8;
+            --farm-gold: #D4A853;
+            --farm-brown: #8B5A2B;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--farm-cream);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--farm-green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-section h1 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--farm-gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            background-color: var(--farm-light);
+            padding: 20px;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--farm-green), var(--farm-light), var(--farm-green));
+            color: white;
+            padding: 180px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 200px;
+            height: 200px;
+            background: var(--farm-gold);
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(50px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            width: 300px;
+            height: 300px;
+            background: var(--farm-gold);
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(50px);
+        }
+
+        .hero-content {
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero .vision {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--farm-cream);
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--farm-gold);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #c49a43;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--farm-green);
+        }
+
+        .mission-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mission-box h3 {
+            color: var(--farm-gold);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .mission-box p {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--farm-green);
+            margin-bottom: 10px;
+        }
+
+        .section-line {
+            width: 80px;
+            height: 4px;
+            background: var(--farm-gold);
+            margin: 0 auto 40px;
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--farm-cream);
+        }
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--farm-green);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--farm-cream);
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            color: var(--farm-green);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .product-features li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .product-features li::before {
+            content: '•';
+            color: var(--farm-gold);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .cta-box {
+            background: var(--farm-green);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .cta-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--farm-cream);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--farm-green);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            background: var(--farm-green);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .contact-item h4 {
+            color: var(--farm-green);
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--farm-green);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--farm-gold);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h3 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--farm-green);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--farm-green);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--farm-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--farm-green);
+            color: white;
+            padding: 50px 30px;
+        }
+
+        .footer-content {
+            max-width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            color: var(--farm-cream);
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: var(--farm-cream);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--farm-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--farm-light);
+            margin-top: 40px;
+            padding-top: 25px;
+            text-align: center;
+            color: var(--farm-cream);
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .vision {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-nav.active {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .logo-section img {
+                height: 45px;
+            }
+
+            .logo-section h1 {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .vision {
+                font-size: 1.3rem;
+            }
+
+            .hero-buttons {
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .mission-box {
+                padding: 25px;
+            }
+
+            .mission-box p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .section-desc {
+                font-size: 1rem;
+            }
+
+            .about-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-card {
+                padding: 25px;
+            }
+
+            .cta-box {
+                padding: 30px;
+            }
+
+            .cta-box h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 25px;
+            }
+
+            .contact-info h3,
+            .contact-form h3 {
+                font-size: 1.3rem;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .mission-box {
+                padding: 20px;
+            }
+
+            .mission-box p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="images/logo.png" alt="Sweet Susu Farm Produce Logo">
+                <h1>Sweet Susu Farm Produce</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Sweet Susu Farm Produce</h1>
+            <p class="vision">Growing prosperity through quality agriculture</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Explore Our Products</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+            <div class="mission-box">
+                <h3>🌱 Our Mission</h3>
+                <p>"Plant today and harvest tomorrow"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="section-line"></div>
+        <p class="section-desc">Sweet Susu Farm Produce is dedicated to growing prosperity through quality agriculture. We believe in the power of sustainable farming and nurturing our land for future generations.</p>
+        
+        <div class="about-cards">
+            <div class="card">
+                <h3>🎯 Our Vision</h3>
+                <p>Growing prosperity through quality agriculture</p>
+            </div>
+            <div class="card">
+                <h3>🏆 Our Mission</h3>
+                <p><em>"Plant today and harvest tomorrow"</em></p>
+            </div>
+            <div class="card">
+                <h3>🌿 Quality First</h3>
+                <p>We prioritize the highest standards in agricultural production to deliver premium quality produce.</p>
+            </div>
+            <div class="card">
+                <h3>👥 Community Focus</h3>
+                <p>Building strong relationships with our community and supporting local agricultural development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="section-line"></div>
+        <p class="section-desc">We offer a wide range of farm-fresh products cultivated with dedication and care.</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">🌾</div>
+                <h3>Grains & Cereals</h3>
+                <p>High-quality grains including maize, rice, and wheat cultivated with care.</p>
+                <ul class="product-features">
+                    <li>Premium quality</li>
+                    <li>Organically grown</li>
+                    <li>Sustainably sourced</li>
+                </ul>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🥕</div>
+                <h3>Fresh Vegetables</h3>
+                <p>A variety of fresh, nutritious vegetables harvested at peak ripeness.</p>
+                <ul class="product-features">
+                    <li>Farm to table</li>
+                    <li>Pesticide-free options</li>
+                    <li>Seasonal selection</li>
+                </ul>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🍎</div>
+                <h3>Fruits</h3>
+                <p>Sweet and juicy fruits grown in optimal conditions for maximum flavor.</p>
+                <ul class="product-features">
+                    <li>Natural sweetness</li>
+                    <li>Rich in nutrients</li>
+                    <li>Hand-picked</li>
+                </ul>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🍆</div>
+                <h3>Specialty Crops</h3>
+                <p>Unique and specialty crops tailored to meet diverse market needs.</p>
+                <ul class="product-features">
+                    <li>Exotic varieties</li>
+                    <li>Custom orders</li>
+                    <li>Expert cultivation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>Interested in Our Products?</h3>
+            <p>Contact us to learn more about our offerings, pricing, and how we can meet your agricultural needs.</p>
+            <br>
+            <a href="#contact" class="btn btn-primary">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="section-line"></div>
+        <p class="section-desc">We'd love to hear from you. Reach out to us for inquiries, orders, or partnerships.</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+265 XXX XXX XXX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@sweetsusufarm.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Malawi</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📘</div>
+                    <div>
+                        <h4>Facebook</h4>
+                        <a href="https://www.facebook.com/profile.php?id=100076239218428" target="_blank">Sweet Susu Farm Produce</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📘</div>
+                    <div>
+                        <h4>Partner Organization</h4>
+                        <a href="https://www.facebook.com/elizabethslibraryinternational" target="_blank">Elizabeth's Library International</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Product inquiry">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your inquiry..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🌱 Sweet Susu Farm Produce</h3>
+                <p>Growing prosperity through quality agriculture</p>
+                <p><em>"Plant today and harvest tomorrow"</em></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100076239218428" target="_blank">📘 Sweet Susu Farm Produce</a></li>
+                    <li><a href="https://www.facebook.com/elizabethslibraryinternational" target="_blank">📘 Elizabeth's Library International</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Sweet Susu Farm Produce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
